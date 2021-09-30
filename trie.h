@@ -20,11 +20,15 @@ typedef struct trie_parent {
 
 parent_t *init();
 
+typedef void (*callback_t)(char *);
+
+
 void add(parent_t *root, const char *word);
 
-void iterate(parent_t *root, void (*callback)(char *));
+void iterate(node_t *node, callback_t callback, char *prefix);
 
-typedef void (*callback_t)(char *);
+void iterate_tree(parent_t *root, callback_t callback);
+
 
 #define AUTOCOMPLETE_TRIE_H
 

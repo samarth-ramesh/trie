@@ -72,7 +72,8 @@ size_t makeSize(char *string){
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
 
-void iterate_child(node_t *node, callback_t callback, char *prefix){
+
+void iterate(node_t *node, callback_t callback, char *prefix){
     for ( int i = 0; i < 26; ++i ) {
         if ( node->children[i] != NULL) {
             size_t newSize = makeSize(prefix);
@@ -81,7 +82,7 @@ void iterate_child(node_t *node, callback_t callback, char *prefix){
 
             strcpy(newPrefix, prefix);
             newPrefix[strlen(prefix)] = node->c;
-            iterate_child(node->children[i], callback, newPrefix);
+            iterate(node->children[i], callback, newPrefix);
             free(newPrefix);
         }
     }
@@ -101,12 +102,12 @@ void iterate_child(node_t *node, callback_t callback, char *prefix){
 
 #pragma clang diagnostic pop
 
-void iterate(parent_t *root, callback_t callback){
+void iterate_tree(parent_t *root, callback_t callback){
     // calls a callback on each word;
     char prefix[26] = {""};
     for ( int i = 0; i < 26; ++i ) {
         if ( root->children[i] != NULL) {
-            iterate_child(( root->children[i] ), callback, prefix);
+            iterate(( root->children[i] ), callback, prefix);
         }
     }
 }

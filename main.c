@@ -10,6 +10,6 @@ int main() {
     add(root, "test");
     add(root, "testa");
     add(root, "atest");
-    iterate(root, callback);
+    iterate_tree(root, callback);
     return 0;
 }
