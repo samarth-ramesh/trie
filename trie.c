@@ -68,11 +68,6 @@ size_t makeSize(char *string){
     return ( sizeof(char)) * ( strlen(string) + 2 ); // one for the next char, one for nul termination
 }
 
-
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-
-
 void iterate(node_t *node, callback_t callback, char *prefix){
     for ( int i = 0; i < 26; ++i ) {
         if ( node->children[i] != NULL) {
@@ -99,8 +94,6 @@ void iterate(node_t *node, callback_t callback, char *prefix){
         return;
     }
 }
-
-#pragma clang diagnostic pop
 
 void iterate_tree(parent_t *root, callback_t callback){
     // calls a callback on each word;
