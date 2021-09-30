@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include "trie.h"
 #include <string.h>
+#include <stdio.h>
 
 parent_t *init(){
     parent_t *rv = malloc(sizeof(parent_t));
@@ -62,14 +63,21 @@ void add(parent_t *root, const char *word){
     last_node->is_eow = true;
 }
 
+
+size_t makeSize(char *string){
+    return ( sizeof(char)) * ( strlen(string) + 2 ); // one for the next char, one for nul termination
+}
+
+
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
 
 void iterate_child(node_t *node, callback_t callback, char *prefix){
     for ( int i = 0; i < 26; ++i ) {
         if ( node->children[i] != NULL) {
-            char *newPrefix = malloc(sizeof(char[MAX_LEN])); // alloccing a new prefix
-            memset(newPrefix, 0, sizeof(char[MAX_LEN]));
+            size_t newSize = makeSize(prefix);
+            char *newPrefix = malloc(newSize); // alloccing a new prefix
+            memset(newPrefix, 0, newSize);
 
             strcpy(newPrefix, prefix);
             newPrefix[strlen(prefix)] = node->c;
@@ -78,13 +86,12 @@ void iterate_child(node_t *node, callback_t callback, char *prefix){
         }
     }
     if ( node->is_eow ) {
-        size_t newSize = sizeof(prefix) + sizeof(char);
+        size_t newSize = makeSize(prefix);
 
         char *newString = malloc(newSize);
         memset(newString, 0, newSize);
         strcpy(newString, prefix);
-
-        newString[strlen(prefix)] = node->c;
+        newString[newSize - 2] = node->c;
         callback(newString);
 
         free(newString);

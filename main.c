@@ -2,12 +2,13 @@
 #include "trie.h"
 
 void callback(char * string){
-    printf("%s", string);
+    printf("%s\n", string);
 }
 
 int main() {
     parent_t *root = init();
     add(root, "test");
+    add(root, "testa");
     add(root, "atest");
     iterate(root, callback);
     return 0;
