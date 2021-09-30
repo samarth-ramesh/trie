@@ -111,3 +111,19 @@ void iterate_tree(parent_t *root, callback_t callback){
         }
     }
 }
+
+node_t *get_node_by_prefix(const char *prefix, parent_t *root){
+    char c = prefix[0];
+    node_t *curChild = root->children[charToIndex(c)];
+    if ( curChild != NULL) {
+        int i = 1;
+        for (c = prefix[i] ; c != '\0'; c = prefix[++i] ) {
+            if (curChild->children[charToIndex(c)] == NULL){
+                return NULL;
+            } else {
+                curChild = curChild->children[charToIndex(c)];
+            }
+        }
+    }
+    return curChild;
+}

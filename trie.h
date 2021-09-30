@@ -29,6 +29,7 @@ void iterate(node_t *node, callback_t callback, char *prefix);
 
 void iterate_tree(parent_t *root, callback_t callback);
 
+node_t *get_node_by_prefix(const char *prefix, parent_t *root);
 
 #define AUTOCOMPLETE_TRIE_H
 

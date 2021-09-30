@@ -11,5 +11,7 @@ int main() {
     add(root, "testa");
     add(root, "atest");
     iterate_tree(root, callback);
+    char prefix[MAX_LEN] = {""};
+    iterate(get_node_by_prefix("tes", root), callback, prefix);
     return 0;
 }
