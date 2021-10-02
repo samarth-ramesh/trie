@@ -1,7 +1,11 @@
-#include <stdio.h>
-#include "trie.h"
-#include "string.h"
+#include "init.h"
+#include "stdio.h"
 
-int main(){
+void callback(char *string) {
+    printf("Item: %s\n", string);
+}
 
+int main() {
+    parent_t *root = initFromJson();
+    iterate_tree(root, callback);
 }
