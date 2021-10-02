@@ -8,5 +8,4 @@ void callback(char *string) {
 int main() {
     parent_t *root = initFromJson();
     iterate_tree(root, callback);
-    delete_tree(root);
 }
