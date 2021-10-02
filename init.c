@@ -8,7 +8,7 @@
 
 
 #include "init.h"
-#include "trie.h"
+#include "initTrie.h"
 
 
 parent_t *initFromJson() {
@@ -32,7 +32,7 @@ parent_t *initFromJson() {
         json_t *bookNormalObj = json_object_get(item, "normal");
         const char *normal = json_string_value(bookNormalObj);
 
-        add(root, normal, title);
+        initTrie_add(root, normal, title);
 
         json_decref(bookTitleObj);
         json_decref(bookNormalObj);

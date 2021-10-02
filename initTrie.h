@@ -24,15 +24,15 @@ parent_t *init();
 typedef void (*callback_t)(char *);
 
 
-void add(parent_t *root, const char *normalWord, const char *word);
+void initTrie_add(parent_t *root, const char *normalWord, const char *word);
 
-void iterate(node_t *node, callback_t callback, char *prefix);
+void initTrie_iterateNode(node_t *node, callback_t callback, char *prefix);
 
-void iterate_tree(parent_t *root, callback_t callback);
+void initTrie_iterateTree(parent_t *root, callback_t callback);
 
-node_t *get_node_by_prefix(const char *prefix, parent_t *root);
+node_t *initTrie_getNodeByPrefix(const char *prefix, parent_t *root);
 
-void delete_tree(parent_t* parent);
+void initTrie_deleteTree(parent_t* root);
 
 #define AUTOCOMPLETE_TRIE_H
 
