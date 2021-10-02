@@ -7,6 +7,6 @@
 
 #include "initTrie.h"
 
-parent_t * initFromJson();
+initTrie_parent_t * initFromJson();
 
 #endif //AUTOCOMPLETE_INIT_H

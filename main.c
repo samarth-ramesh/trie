@@ -6,7 +6,7 @@ void callback(char *string) {
 }
 
 int main() {
-    parent_t *root = initFromJson();
+    initTrie_parent_t *root = initFromJson();
     initTrie_iterateTree(root, callback);
     initTrie_deleteTree(root);
 }

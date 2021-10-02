@@ -8,31 +8,31 @@
 
 #include "stdbool.h"
 
-typedef struct trie_node {
-    struct trie_node *children[26];
+typedef struct initTrie_node {
+    struct initTrie_node_t *children[26];
     bool is_eow;
     char c;
     char *word;
-} node_t;
+} initTrie_node_t;
 
-typedef struct trie_parent {
-    node_t *children[26];
-} parent_t;
+typedef struct initTrie_parent {
+    initTrie_node_t *children[26];
+} initTrie_parent_t;
 
-parent_t *init();
+initTrie_parent_t *init();
 
 typedef void (*callback_t)(char *);
 
 
-void initTrie_add(parent_t *root, const char *normalWord, const char *word);
+void initTrie_add(initTrie_parent_t *root, const char *normalWord, const char *word);
 
-void initTrie_iterateNode(node_t *node, callback_t callback, char *prefix);
+void initTrie_iterateNode(initTrie_node_t *node, callback_t callback, char *prefix);
 
-void initTrie_iterateTree(parent_t *root, callback_t callback);
+void initTrie_iterateTree(initTrie_parent_t *root, callback_t callback);
 
-node_t *initTrie_getNodeByPrefix(const char *prefix, parent_t *root);
+initTrie_node_t *initTrie_getNodeByPrefix(const char *prefix, initTrie_parent_t *root);
 
-void initTrie_deleteTree(parent_t* root);
+void initTrie_deleteTree(initTrie_parent_t* root);
 
 #define AUTOCOMPLETE_TRIE_H
 

@@ -11,8 +11,8 @@
 #include "initTrie.h"
 
 
-parent_t *initFromJson() {
-    parent_t *root = init();
+initTrie_parent_t *initFromJson() {
+    initTrie_parent_t *root = init();
 
     json_error_t err;
     json_t *jval = json_load_file("./books.json", 0, &err);
