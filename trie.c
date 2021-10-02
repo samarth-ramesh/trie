@@ -109,6 +109,25 @@ void iterate_tree(parent_t *root, callback_t callback) {
     }
 }
 
+void delete_node(node_t *node){
+    for (int i = 0; i < 26; ++i) {
+        if (node->children[i] != NULL){
+            delete_node(node->children[i]);
+        }
+    }
+    free(node->word);
+    free(node);
+}
+
+void delete_tree(parent_t *root){
+    for (int i = 0; i < 26; ++i) {
+        if (root->children[i] != NULL){
+            delete_node(root->children[i]);
+        }
+    }
+    free(root);
+}
+
 node_t *get_node_by_prefix(const char *prefix, parent_t *root) {
     char c = prefix[0];
     node_t *curChild = root->children[charToIndex(c)];
