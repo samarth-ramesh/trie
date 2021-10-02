@@ -5,4 +5,8 @@
 #ifndef AUTOCOMPLETE_INIT_H
 #define AUTOCOMPLETE_INIT_H
 
+#include "trie.h"
+
+parent_t * initFromJson();
+
 #endif //AUTOCOMPLETE_INIT_H
