@@ -115,8 +115,11 @@ void delete_node(node_t *node){
             delete_node(node->children[i]);
         }
     }
-    free(node->word);
+    if (node->word != NULL){
+        free(node->word);
+    }
     free(node);
+
 }
 
 void delete_tree(parent_t *root){

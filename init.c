@@ -36,6 +36,8 @@ parent_t *initFromJson() {
 
         json_decref(bookTitleObj);
         json_decref(bookNormalObj);
+
     }
+    json_decref(jval);
     return root;
 }
