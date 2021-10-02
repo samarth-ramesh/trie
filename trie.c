@@ -130,7 +130,6 @@ void delete_tree(parent_t *root){
     }
     free(root);
 }
-
 node_t *get_node_by_prefix(const char *prefix, parent_t *root) {
     char c = prefix[0];
     node_t *curChild = root->children[charToIndex(c)];
