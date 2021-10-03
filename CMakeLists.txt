@@ -3,4 +3,4 @@ project(autocomplete)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(autocomplete main.cpp trie.cpp trie.h InitNode.cpp InitNode.h)
+add_executable(autocomplete main.cpp trie.cpp trie.h)
